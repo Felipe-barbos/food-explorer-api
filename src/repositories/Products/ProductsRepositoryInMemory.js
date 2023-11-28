@@ -1,23 +1,23 @@
 
 
-class ProductsRepositoryInMemory{
- products = [];
+class ProductsRepositoryInMemory {
+  products = [];
 
 
- async createProduct({name, description, plice}){
+  async createProduct({ name, description, price }) {
 
-  const product = {
-   id: Math.floor(Math.random() * 1000) + 1,
-   name,
-   description,
-   plice
-  };
+    const product = {
+      id: Math.floor(Math.random() * 1000) + 1,
+      name,
+      description,
+      price
+    };
 
-  this.products.push(product);
+    this.products.push(product);
 
 
-  return product;
- }
+    return product;
+  }
 }
 
 

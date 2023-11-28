@@ -1,27 +1,34 @@
 const UserRepositoryInMemory = require("../../repositories/Users/UserRepositoryInMemory");
 const ProductsRepositoryInMemory = require("../../repositories/Products/ProductsRepositoryInMemory");
 const UsersCreateService = require("../../services/Users/UsersCreateService");
-const SessionsCreateService = require("../../services/Session");
 const ProductsCreateService = require("../../services/CreateProduct/ProductsCreateService");
+const { except } = require("../../database/knex");
 
-describe("SessionsCreateService", ()=> {
-let usersRepositoryInMemory = null;
-let usersCreateService = null;
-let sessionsCreateService = null;
-let productsRepositoryInMemory = null;
-let productsCreateService = null;
+describe("SessionsCreateService", () => {
+
+  let productsRepositoryInMemory = null;
+  let productsCreateService = null;
 
 
-beforeEach(() => {
- usersRepositoryInMemory = new UserRepositoryInMemory();
- usersCreateService = new UsersCreateService(usersRepositoryInMemory);
- sessionsCreateService = new SessionsCreateService(usersRepositoryInMemory);
- productsRepositoryInMemory = new ProductsRepositoryInMemory();
- productsCreateService = new ProductsCreateService(productsRepositoryInMemory);
-});
+  beforeEach(() => {
+    productsRepositoryInMemory = new ProductsRepositoryInMemory();
+    productsCreateService = new ProductsCreateService(productsRepositoryInMemory);
+  });
 
- it("Should be create a product", ()=>{
-  
- });
- 
+  it("Should be create a product", async () => {
+    const product = {
+      name: "Sala de frutas",
+      description: "Uma salada incrível",
+      price: 18.99
+    }
+
+    const productCreated = await productsCreateService.execute(product);
+
+
+    console.log(productCreated);
+
+    expect(productCreated).toHaveProperty("id");
+
+  });
+
 });

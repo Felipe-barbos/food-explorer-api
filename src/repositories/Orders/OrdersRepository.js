@@ -6,8 +6,6 @@ class OrdersRepository {
 
   async createOrder({ user_id, sales }) {
 
-    console.log(user_id, sales);
-
     let totalAmount = 99;
 
 
@@ -35,6 +33,19 @@ class OrdersRepository {
 
     return order_id;
 
+  }
+
+
+  async showOrder(order_id) {
+
+    const order = await knex("orders").where({ id: order_id }).first();
+
+    const sales = await knex("sales").where({ order_id });
+
+    return {
+      ...order,
+      sales
+    };
   }
 }
 

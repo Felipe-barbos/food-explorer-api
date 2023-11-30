@@ -1,4 +1,4 @@
-const CreateOrderService = require("../../services/CreateOrder/CreateOrderService");
+const CreateOrderService = require("../../services/Order/CreateOrderService");
 const OrdersRepository = require("../../repositories/Orders/OrdersRepository");
 
 

@@ -1,5 +1,5 @@
 const ProductsRepository = require("../../repositories/Products/ProductsRepository");
-const ProductsCreateService = require("../../services/CreateProduct/ProductsCreateService");
+const ProductsCreateService = require("../../services/Product/ProductsCreateService");
 
 class ProductsController {
   async handle(request, response) {

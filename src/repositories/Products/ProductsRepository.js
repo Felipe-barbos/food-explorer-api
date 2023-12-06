@@ -13,6 +13,17 @@ class ProductsRepository {
 
     return { id: product_id };
   }
+
+
+  async activeProduct({ product_id, isActive }) {
+    const product = await knex("products").where({ id: product_id })
+      .update({
+        isActive: isActive,
+      });
+
+
+    return product;
+  }
 }
 
 

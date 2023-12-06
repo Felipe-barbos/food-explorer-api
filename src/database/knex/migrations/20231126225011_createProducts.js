@@ -4,6 +4,7 @@ exports.up = knex => knex.schema.createTable("products", table => {
   table.text("name").notNullable();
   table.text("description");
   table.double("price");
+  table.boolean("isActive").default(false);
 
   table.timestamp("created_at").default(knex.fn.now());
   table.timestamp("updated_at").default(knex.fn.now());

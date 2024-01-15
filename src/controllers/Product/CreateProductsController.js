@@ -3,13 +3,13 @@ const ProductsCreateService = require("../../services/Product/ProductsCreateServ
 
 class ProductsController {
   async handle(request, response) {
-    const { name, description, price } = request.body;
+    const { name, description, type, price } = request.body;
 
     const productsRepository = new ProductsRepository();
     const productsCreateService = new ProductsCreateService(productsRepository);
 
 
-    const product_id = await productsCreateService.execute({ name, description, price });
+    const product_id = await productsCreateService.execute({ name, description,type, price });
 
 
     response.json({
